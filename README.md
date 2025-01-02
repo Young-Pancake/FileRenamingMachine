@@ -8,7 +8,7 @@ its parts.
 
 TO EXPLAIN THINGS SHORTLY:
   I have created this program out of the curious thought of replacing a simple yet daunting task of renaming 
-  physical or digital messages or letters that may arrive to a certain company and can come in the form of a
- reciept or a bill of sort that may contain any other internal information or any other form of information 
- that a company needs to store somewhere 
+  physical or digital messages or letters that may arrive to a certain company(or to a person)and can come in 
+the form of a reciept or a bill of sort that may contain any other internal information or any other form of
+ information that a company needs to store somewhere 
 
