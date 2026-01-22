@@ -1,4 +1,4 @@
-Hello and welcome! 
+#Hello and welcome!# 
 
 This is an experimental (Java) program that may require you to already know things about optical character
  recognition (OCR), and some time to understand most of the code.
