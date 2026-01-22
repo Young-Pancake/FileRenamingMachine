@@ -1,6 +1,6 @@
 Hello and welcome! 
 
-This is an experimental (Java) program that may need you to already know things about optical character
+This is an experimental (Java) program that may require you to already know things about optical character
  recognition (OCR), and some time to understand most of the code.
  
 I have uploaded an INSTRUCTIONS file the contains the instructions on how to use this code and to understand
