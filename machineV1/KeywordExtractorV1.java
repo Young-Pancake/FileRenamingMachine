@@ -5,9 +5,9 @@ import java.io.*;
 
 public class KeywordExtractorV1 extends MainMachine{
 	FileMoverV1 fm;
-	//these will be the parts that build up the text the will rename the PDF file later on
-	//it is not needed for them to be this many but these are just an example of how it could
-	//be done
+	/*these will be the parts that build up the text the will rename the PDF file later on
+	it is not needed for them to be this many but these are just an example of how it could
+	be done*/
 	static String dateValue = "null";
 	static String type1 = "null";
 	static String type2 = "null";
@@ -17,8 +17,8 @@ public class KeywordExtractorV1 extends MainMachine{
 	public void MainKeywordExtractor() throws IOException {
 		fm= new FileMoverV1();
 		
-		//This is an example of a set of if-else statements that are in levels, each level can be
-		//determined by a number. It could also have a nested-if it needs to be more specified 
+		/*This is an example of a set of if-else statements that are in levels, each level can be
+		determined by a number. It could also have a nested-if it needs to be more specified*/
 		if(determinePatternNumber()==1) {
 			DatePatternExtractor();System.out.print("_");FindWordAndSetToSomethingSpecific();System.out.print("_");FindWordAndSetAsIs();
 			if(dateValue!="null" & type1!="null" & type2!="null") {
@@ -51,8 +51,8 @@ public class KeywordExtractorV1 extends MainMachine{
 			return 1;
 		} else if (patternTwo.matcher(content).find()) {
 			return 2;
-			// could add extra such as: else if (patternTwo.matcher(content).find()) {
-			//return 3; 
+			/* could add extra such as: else if (patternTwo.matcher(content).find()) {
+			return 3; */
 
 		} else {
 			return -1; // No matching pattern 
@@ -66,16 +66,16 @@ public class KeywordExtractorV1 extends MainMachine{
 	public void DatePatternExtractor() {
 		String output = "textMerger directory" + "\\output.txt";
 		
-		//This is a regular expression that can "Generally" help out in finding date 
-		//format in most documents this could of course not be the case for some
-		//circumstances so I highly recommend to see what fits you best 
+		/*This is a regular expression that can "Generally" help out in finding date 
+		format in most documents this could of course not be the case for some
+		circumstances so I highly recommend to see what fits you best*/ 
 		String regexDate = "\\d{2}(\\.|\\,|\\-)(\\d{2}|Jan|JAN|Feb|FEB|Mar|MAR|Apr|APR|May|MAY|Jun|JUN|Jul|JUL|Aug|AUG|Sep"
 				+ "|SEP|Oct|OCT|Nov|NOV|Dec|DEC)(\\.|\\,)(\\d{4}|\\d{2})";
 
-	//we use regular expressions here to try to find the word that can mean date such as "RecieptDate" or
-	//it could just be written as "Date" and then try to find the format for said keyword which could
-	//be DD/MM/YY or DD/MM/YYYY. So in short it finds a word and then goes searching after the place in which 
-	//the point was discovered at and then it goes and searches for a format that fits the requirement
+	/*we use regular expressions here to try to find the word that can mean date such as "RecieptDate" or
+	it could just be written as "Date" and then try to find the format for said keyword which could
+	be DD/MM/YY or DD/MM/YYYY. So in short it finds a word and then goes searching after the place in which 
+	the point was discovered at and then it goes and searches for a format that fits the requirement*/
 		Pattern RecieptDatePattern = Pattern.compile("(?i)(^\\s*RecieptDate:?\\s*$|(?<=\\s)RecieptDate:?\\s*(" + regexDate + "))");
 		Pattern DatePattern = Pattern.compile("(?i)(^\\s*Date:?\\s*$|(?<=\\s)Date:?\\s*(" + regexDate + "))");
 
@@ -112,8 +112,8 @@ public class KeywordExtractorV1 extends MainMachine{
 				}
 			}
 			
-			//this is for the formatting that will make the end date be set to the
-			// format of YYMMDD. It could be modified if needed depending on preference
+			/*this is for the formatting that will make the end date be set to the
+			 format of YYMMDD. It could be modified if needed depending on preference*/
 			if (extractedDate != null && extractedDate.length() >= 8) {
 				String formattedDate = formatDateString(extractedDate);
 				if (formattedDate != null) {
@@ -131,7 +131,7 @@ public class KeywordExtractorV1 extends MainMachine{
 		String month = date.substring(3, 6);
 		String year = null;
 
-		// Convert month abbreviation to numeric format
+		// Convert month to numeric format
 		switch (month) {
 		case "Jan":
 		case "JAN": month = "01"; break;
@@ -177,9 +177,9 @@ public class KeywordExtractorV1 extends MainMachine{
 		return year + month + day;
 	}
 	
-	//This is a helpful type of method in which you may want to find a certain word but 
-	//don't want it to save it as that keyword. Like for example you find the word
-	// "lake" and you want it then to save the word "Fish"
+	/*This is a helpful type of method in which you may want to find a certain word but 
+	don't want it to save it as that keyword. Like for example you find the word
+	"lake" and you want it then to save the word "Fish"*/
 	public void FindWordAndSetToSomethingSpecific() {
 		String output = "textMerger directory" + "\\output.txt";
 
@@ -198,10 +198,10 @@ public class KeywordExtractorV1 extends MainMachine{
 			// Determine the presence of keywords
 			Matcher MatcherOne = PatternOne.matcher(contentStr);
 			Matcher MatcherTwo = PatternTwo.matcher(contentStr);
-			//and so on
+	
 			boolean hasPatterOne = MatcherOne.find();
 			boolean hasPatterTwo = MatcherTwo.find();
-			//and so on
+			
 
 			//example of if-else statements where the more specific the earlier
 			if (hasPatterOne & hasPatterTwo) {System.out.print("SchlussRNG");
@@ -216,11 +216,11 @@ public class KeywordExtractorV1 extends MainMachine{
 		}
 	}
 	
-	//this method is much simpler. Find the keyword and save that keyword as is. 
-	//there is also some cutting in between to do depending on how you'll use the
-	//regular expressions which may save the words with them but generally it 
-	//should be find as there is a part in the code that removes most of the 
-	//useless parts leaving you with a clean word
+	/*this method is much simpler. Find the keyword and save that keyword as is. 
+	there is also some cutting in between to do depending on how you'll use the
+	regular expressions which may save the words with them but generally it 
+	should be find as there is a part in the code that removes most of the
+	useless parts leaving you with a clean word*/
 	public void FindWordAndSetAsIs() {
 		String output = "textMerger directory" + "\\output.txt";
 		
@@ -251,6 +251,7 @@ public class KeywordExtractorV1 extends MainMachine{
 			}
 		}
 	}
+
 
 
 
