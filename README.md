@@ -56,7 +56,7 @@ public class MainMachineV1{
 ```
 # Usage
 
- The FileREnamingMachine can be used for any job requiring changing names of files, or even
+ The FileRenamingMachine can be used for any job requiring changing names of files, or even
  for personal use if you have a project that needs lots of files to be renamed.
  
  # Contributing
