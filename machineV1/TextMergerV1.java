@@ -23,7 +23,6 @@ public class TextMergerV1 extends MainMachine {
             for (String fileName : files) {
                 File file = new File(sourceDir, fileName);
 
-                // Using try-with-resources to ensure BufferedReader is closed properly
                 try (BufferedReader br = new BufferedReader(new FileReader(file))) {
                     String line;
                     while ((line = br.readLine()) != null) {
@@ -32,12 +31,13 @@ public class TextMergerV1 extends MainMachine {
                     }
                 } catch (IOException e) {
                     System.err.println("Failed to read file: " + file.getAbsolutePath());
-                    e.printStackTrace(); // Log the exception for debugging
+                    e.printStackTrace();
                 }
             }
         } catch (IOException e) {
             System.err.println("Failed to write to file: " + mergedFile.getAbsolutePath());
-            e.printStackTrace(); // Log the exception for debugging
+            e.printStackTrace();
         }
     }
+
 }
