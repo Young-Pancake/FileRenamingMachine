@@ -19,10 +19,48 @@ cd FileRenamingMachine
 ```
 
 # 🚀 Quick Start 
+This is the heart of the program, with everything getting done in a infinite loop.
+``` Java
+package machine;
 
-TO EXPLAIN THINGS SHORTLY:
-  I have created this program out of the curious thought of replacing a simple yet daunting task of renaming 
-  physical or digital messages or letters that may arrive to a certain company(or to a person)and can come in 
-the form of a reciept or a bill of sort that may contain any other internal information or any other form of
- information that a company needs to store somewhere 
+import java.io.IOException;	
+
+public class MainMachineV1{
+	static  Detector de = new Detector();
+	static  PdfToJpgTransformer ptjt = new PdfToJpgTransformer();
+	static  OCRtesseract ocrt = new OCRtesseract();
+	static  FileMover fm = new FileMover();
+	static  TextMerger tm = new TextMerger();
+	static  KeywordExtractor ke = new KeywordExtractor();
+	static int x=1;
+	public static void main(String[] args) throws InterruptedException, IOException {
+		while(true) {
+			de.MainDetector();
+			if(de.paths.length>0) {
+				ptjt.MainPdfToJpgTransformer();
+				ocrt.MainOCRtesseract();
+				fm.pdfMover();
+				tm.MainTextMerger();
+				ke.MainKeywordExtractor();
+				fm.JpgRemover();
+				fm.TxtRemover();
+				fm.TextMergerRemover();
+				System.out.println("---------------------------------");	
+				System.out.println("End of " + x + " Cycles");
+				System.out.println();
+				x++;
+			}
+		}
+	}
+}
+```
+# Usage
+
+ The FileREnamingMachine can be used for any job requiring changing names of files, or even
+ for personal use if you have a project that needs lots of files to be renamed.
+ 
+ # Contributing
+
+  Feel free to clone or fork this project. I would love to see any kind of criticism.
+  Best regards, and have fun!
 
