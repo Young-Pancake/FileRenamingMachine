@@ -20,8 +20,8 @@ public class OCRtesseractV1 extends MainMachine {
 			pathOCR= fileOCR.list();
 			tesseract.setDatapath("directory for the OCR Tesseract with the end path similar to: \\Tess4J-3.4.8-src\\Tess4J\\tessdata"); 
 
-			// the path of your tests data folder 
-			// inside the extracted file 
+			/*the path of your tests data folder 
+			  inside the extracted file*/
 			for(String paths: pathOCR) {
 				
 					String text 
@@ -40,4 +40,5 @@ public class OCRtesseractV1 extends MainMachine {
 			
 	}
 }
+
 
